@@ -1,0 +1,28 @@
+
+<div id="map"></div>
+  <div class="load-form">
+    <input type="text" id="vrbo" class="form-control pull-left" placeholder="Enter a minx/miny/maxx/maxy" style="width:225px">
+    <button class="btn btn-primary pull-right" onClick="load()">Load</button>
+  </div>
+
+<script>
+
+  function load(){
+    var val = document.getElementById('vrbo').value.split('/');
+    var minx = val.shift();
+    var miny = val.shift();
+    var maxx = val.shift();
+    var maxy = val.shift();
+    if ( user && repo && path ) {
+      location.href = '/vrbo/' + [ minx, miny, maxx, maxy ].join('/') + '/preview';
+    }
+  }
+
+  $(function(){
+    var mapDom = 'map';
+    $('#'+mapDom).css({ width:document.width, height: document.height });
+    var koop = koopMap( mapDom );
+  });
+
+</script>
+
