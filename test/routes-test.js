@@ -68,5 +68,16 @@ describe('Koop Routes', function(){
       });
     });
 
+    describe('/vrbo/-116.997/34.225/-116.785/34.265/preview', function() {
+      it('should return 200', function(done) {
+        request(koop)
+          .get('/vrbo/-116.997/34.225/-116.785/34.265/preview')
+          .end(function(err, res){
+            res.should.have.status(200);
+            done();
+          });
+      });
+    });
+
 });
 

@@ -5,7 +5,7 @@ var Controller = extend( {}, BaseController );
 
 Controller.provider = true,
 Controller.index = function(req, res){
-  res.send('VRBO API Wrapper');
+  res.render(__dirname + '/../views/index');
 };
 
 Controller.get = function(req, res){
