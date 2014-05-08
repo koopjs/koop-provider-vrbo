@@ -18,6 +18,10 @@ Controller.featureservice = function(req, res){
     var callback = req.query.callback, self = this;
     delete req.query.callback;
 
+    for (var k in req.body){
+      req.query[k] = req.body[k];
+    }
+
     vrbo.getListings(req.params, req.query, function( err, data){
       Controller._processFeatureServer( req, res, err, data, callback);
     });

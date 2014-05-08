@@ -24,6 +24,21 @@ module.exports = {
     action: 'featureservice'
   },
 
+  'post /vrbo/:minx/:miny/:maxx/:maxy/FeatureServer': {
+    controller: 'vrbo',
+    action: 'featureservice'
+  },
+
+  'post /vrbo/:minx/:miny/:maxx/:maxy/FeatureServer/:layer': {
+    controller: 'vrbo',
+    action: 'featureservice'
+  },
+  
+  'post /vrbo/:minx/:miny/:maxx/:maxy/FeatureServer/:layer/:method': {
+    controller: 'vrbo',
+    action: 'featureservice'
+  },
+
   'get /vrbo/:minx/:miny/:maxx/:maxy/preview' : {
     controller  : 'vrbo',
     action: 'preview'
