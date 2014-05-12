@@ -18,14 +18,24 @@ exports.getListings = function(bbox, options, callback){
 
           json.Listings.forEach(function(listing, i){
             feature = {type: 'Feature', id: i, geometry:{coordinates: [listing.Longitude, listing.Latitude], type:'Point'}};
-            feature.properties = listing; 
+
+            var props = {};
+            props.UnitId = parseInt(listing.UnitId);
+            props.PriceRange = listing.PriceRange;
+            props.PriceInterval = listing.PriceInterval;
+            props.Bedrooms = parseInt(listing.Bedrooms);
+            props.Bathrooms = parseInt(listing.Bathrooms);
+            props.Sleeps = parseInt(listing.Sleeps);
+            props.NumberOfReviews = parseInt(listing.NumberofReviews);
+            props.AverageReview = parseInt(listing.AverageReview);
+
+            feature.properties = props; 
             geojson.features.push(feature);
           });
   
           if ( !geojson.length ){
             geojson = [ geojson ];
           } 
-          console.log('Data!!', geojson); 
           Cache.insert( type, key, geojson, 0, function( err, success){
             if ( success ) { 
               callback( null, geojson );

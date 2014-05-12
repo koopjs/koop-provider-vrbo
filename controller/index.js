@@ -22,6 +22,8 @@ Controller.featureservice = function(req, res){
       req.query[k] = req.body[k];
     }
 
+    console.log(req.body);
+
     vrbo.getListings(req.params, req.query, function( err, data){
       Controller._processFeatureServer( req, res, err, data, callback);
     });
