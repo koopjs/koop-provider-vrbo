@@ -1,19 +1,22 @@
 var extend = require('node.extend'),
-  BaseController = require('koop-server/lib/Controller.js');
+  BaseController = require('koop-server/lib/BaseController.js');
 
 var Controller = function( vrbo ){
 
-  this.index = function(req, res){
+  var controller = {};
+  controller.__proto__ = BaseController( );
+
+  controller.index = function(req, res){
     res.render(__dirname + '/../views/index');
   };
   
-  this.get = function(req, res){
+  controller.get = function(req, res){
     vrbo.getListings(req.params, req.query, function(err, listings){
       res.json(listings);
     });
   };
   
-  this.featureserver = function(req, res){
+  controller.featureserver = function(req, res){
       var callback = req.query.callback, self = this;
       delete req.query.callback;
   
@@ -22,13 +25,13 @@ var Controller = function( vrbo ){
       }
   
       vrbo.getListings(req.params, req.query, function( err, data){
-        BaseController._processFeatureServer( req, res, err, data, callback);
+        controller.processFeatureServer( req, res, err, data, callback);
       });
   };
   
   // Handle the preview route 
   // renders views/demo/github 
-  this.preview = function(req, res){
+  controller.preview = function(req, res){
     res.render(__dirname + '/../views/demo', { locals: { 
       minx: req.params.minx, 
       miny: req.params.miny, 
@@ -37,7 +40,7 @@ var Controller = function( vrbo ){
     });
   };
 
-  return this;
+  return controller;
 
 };
 module.exports = Controller;
