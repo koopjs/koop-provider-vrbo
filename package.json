@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "koop-server": "*",
-    "config": "~0.4.35",
-    "ejs": "~1.0.0",
-    "node.extend": "~1.0.10"
+    "config": "~1.25.1",
+    "ejs": "~2.5.6",
+    "node.extend": "~1.1.6"
   },
   "author": "Chris Helm",
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "supertest": "~0.11.0",
-    "should": "~3.3.1",
-    "yaml": "~0.2.3"
+    "supertest": "~3.0.0",
+    "should": "~11.2.1",
+    "yaml": "~0.3.0"
   }
 }
